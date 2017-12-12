@@ -1,0 +1,19 @@
+#calculator {
+  text-align: center;
+  background: pink;
+  width: 11%;
+ }
+
+ table {
+   width: 30%;
+   border:4px;
+ }
+
+ td {
+   column-span: 2px;
+   text-align: center;
+ }
+
+ input[type=text] {
+   text-align: right;
+ }

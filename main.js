@@ -1,69 +1,102 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-   var buttons = document.getElementsByTagName('button');
+  var buttons = document.getElementsByTagName('button');
 
-   for(var i=0; i < buttons.length; i++) {
+  for(var i=0; i < buttons.length; i++) {
 
-     buttons[i].addEventListener("click", buttonClicked);
-   }
+    buttons[i].addEventListener("click", buttonClicked);
+  }
+});
+//following function is used when  the button event is clicked ;
+var operation = '';
+
+function buttonClicked(evt) {
+
+  var src = evt.srcElement.textContent.trim();
+
+  if (src === '=') {
+
+    var numbers = document.getElementById('input').value.split(operation);
+
+    var num1 = Number(numbers[0]);
+    var num2 = Number(numbers[1]);
+
+    console.log('number 1 is : ' + num1);
+    console.log('number 2 is : ' + num2);
+
+    switch (operation) {
+      case '+':
+      add(num1, num2);
+      break;
+      case '-':
+      subtract(num1, num2);
+      break;
+      case '/':
+      divide(num1, num2);
+      break;
+      case '*':
+      multiply(num1, num2);
+      break;
+      default:
+      break;
+
+    }
 
 
+  } else {
+    document.getElementById('input').value += src;
+  }
 
- function buttonClicked(evt) {
-var
-  document.getElementsByTagName('input')[0].value += evt.srcElement.innerText;
-if(evt.srcElement.innerText == "=") {
-document.getElementsByTagName('input')[0].value =
+  if (src === '+' || src === '-' || src === '/' || src == '*') {
+    operation = src;
+  }
+}
+//Addition function for calculator
 
+function add(num1, num2 ) {
+
+  var result = num1 + num2;
+
+  console.log('The result of addition is : ' + result);
+
+  document.getElementById('input').value = result;
 }
 
+//substraction function for calculator
+
+function subtract(num1, num2) {
+  var result = num1 - num2;
+  console.log('the result of addition is :' + result);
+
+
+  document.getElementById('input').value = result;
 }
 
-function add (number1, number2) {
-  var result = 0;
-  return result = number1 + number2;
-
-}
-console.log(add(3,5));
-
-
-
-function substract(number1, number2) {
-  var result = 0;
-  return result = number1 - number2;
-
-}
-console.log(substract(11, 3));
-
-
-
+// multiplication function for calculator
 
 function multiply(num1, num2) {
 
-  return num1 * num2;
+  var result = num1 * num2;
+  console.log('the result of multiplication is :' + result);
+
+  document.getElementById('input').value = result;
 }
-console.log(multiply(5, 5));
 
 
+// division function for calculator
 
-function division(num1,num2) {
+function divide(num1, num2) {
+  var result = num1 / num2;
+  console.log('the result of division is:' + result);
 
-  return num1 / num2;
-
+  document.getElementById('input').value = result;
 }
-console.log(division(3, 6));
 
+// remainder function for calculator
 
+function remainder (num1, num2) {
+  var result = num1 % num2;
+  console.log('the result of remainder is :' + result);
 
-function getReminder(num1, num2) {
-
-  return num1 % num2;
-
+  document.getElementById('input').value = result;
 }
-console.log(getReminder(50, 3));
-
-
-
-
-
-});
